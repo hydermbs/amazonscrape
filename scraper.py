@@ -21,7 +21,7 @@ def open_url(url):
     soup_2 = bs(response_data.text,'html.parser')
     return soup_2
 
-def extract_page(query,num,result_queue,update_log):
+def extract_page(query,num,result_queue):
     data_list = []
     response = response_func(query,num)
     soup = bs(response,'html.parser')
@@ -62,14 +62,13 @@ def extract_page(query,num,result_queue,update_log):
                         'Reviews':reviews,
                         'Supplier':supplier,
                         'Supplier_url':f'https://www.amazon.com{supplier_url}'}
-            update_log(dict_data)
             data_list.append(dict_data)
         except AttributeError:
             print('data not found')
             continue
     result_queue.put(data_list)
 
-def extract_data(query,update_log):
+def extract_data(query):
     times = 8
     threads = []
     result_queue = queue.Queue()
@@ -89,3 +88,11 @@ def extract_data(query,update_log):
 def convert_csv(data,filename):
     df = pd.DataFrame(data)
     df.to_csv(filename)
+
+def main():
+    data = extract_data(query)
+    convert_csv(data,filename)
+if __name__ =='__main__':
+    main()
+    
+    
