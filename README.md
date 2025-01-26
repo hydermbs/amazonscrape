@@ -36,7 +36,7 @@ pip install beautifulsoup4 requests
 Clone the repository to your local machine using:  
 
 ```bash  
-git clone https://github.com/<YourUsername>/amazon-data-scraper.git  
+git clone https://github.com/hydermbs/amazonscrape.git  
 cd amazon-data-scraper  
 ```  
 
@@ -47,7 +47,7 @@ Update the script with the desired Amazon product URLs or ASINs you wish to scra
 Execute the script using the command:  
 
 ```bash  
-python amazon_scraper.py  
+python scraper.py  
 ```  
 
 ### 5️⃣ Output  
